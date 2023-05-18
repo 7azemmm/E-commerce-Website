@@ -73,14 +73,6 @@ const AdminAddProducts = () => {
                         <option value="val2">  اديداس</option>
                         <option value="val2"> بوما </option>
                         <option value="val2">شانيل </option>
-                        <option value="val">فاشون</option>
-                        <option value="val2">  اديداس</option>
-                        <option value="val2"> بوما </option>
-                        <option value="val2"> </option>
-                        <option value="val">زارا</option>
-                        <option value="val2">  اديداس</option>
-                        <option value="val2"> بوما </option>
-                        <option value="val2"> </option>
                     </select>
                     <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
                     <div className="mt-1 d-flex">
