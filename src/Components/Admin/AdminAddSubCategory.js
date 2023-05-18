@@ -13,10 +13,11 @@ const AdminAddSubCategory = () => {
                         placeholder="اسم التصنيف الفرعي"
                     />
                     <select name="languages" id="lang" className="select mt-3 px-2 ">
-                        <option value="val">التصنيف الاول</option>
-                        <option value="val2">التصنيف الثاني</option>
-                        <option value="val2">التصنيف الثالث</option>
-                        <option value="val2">التصنيف الرابع</option>
+                        <option value="val"> جينز</option>
+                        <option value="val2"> شورت</option>
+                        <option value="val2">تيشيرت </option>
+                        <option value="val2">شيرت </option>
+                        <option value="val2">هودي </option>
                     </select>
                 </Col>
             </Row>
