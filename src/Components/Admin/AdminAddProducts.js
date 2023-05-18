@@ -13,8 +13,7 @@ const AdminAddProducts = () => {
     }
 
     const options = [
-        { name: "التصنيف الاول", id: 1 },
-        { name: "التصنيف الثاني", id: 2 },
+        { name: "ملابس", id: 1 } 
     ];
 
     return (
@@ -49,11 +48,12 @@ const AdminAddProducts = () => {
                         name="languages"
                         id="lang"
                         className="select input-form-area mt-3 px-2 ">
-                        <option value="val">التصنيف الرئيسي</option>
-                        <option value="val">التصنيف الاول</option>
-                        <option value="val2">التصنيف الثاني</option>
-                        <option value="val2">التصنيف الثالث</option>
-                        <option value="val2">التصنيف الرابع</option>
+                        <option value="val"> جينز</option>
+                        <option value="val"> جينز</option>
+                        <option value="val2"> شورت</option>
+                        <option value="val2">تيشيرت </option>
+                        <option value="val2"> شيرت</option>
+                        <option value="val2"> هودي</option>
                     </select>
 
                     <Multiselect
@@ -69,10 +69,18 @@ const AdminAddProducts = () => {
                         name="brand"
                         id="brand"
                         className="select input-form-area mt-3 px-2 ">
-                        <option value="val">الماركة</option>
-                        <option value="val2">التصنيف الماركة الاولي</option>
-                        <option value="val2">التصنيف الماركة الثانيه</option>
-                        <option value="val2">التصنيف الرابع</option>
+                        <option value="val">زارا</option>
+                        <option value="val2">  اديداس</option>
+                        <option value="val2"> بوما </option>
+                        <option value="val2">شانيل </option>
+                        <option value="val">فاشون</option>
+                        <option value="val2">  اديداس</option>
+                        <option value="val2"> بوما </option>
+                        <option value="val2"> </option>
+                        <option value="val">زارا</option>
+                        <option value="val2">  اديداس</option>
+                        <option value="val2"> بوما </option>
+                        <option value="val2"> </option>
                     </select>
                     <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
                     <div className="mt-1 d-flex">
