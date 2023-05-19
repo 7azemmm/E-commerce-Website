@@ -31,8 +31,5 @@ install it following the instructions for your operating system.
 
 7-Once the download is complete, navigate into the cloned repository directory using the command cd repository.
 
-## Screenshots for the website:
 
-![WhatsApp Image 2023-03-23 at 11 50 35 PM (1)](https://user-images.githubusercontent.com/96701230/228072731-e3fbd949-abd8-47d6-9867-7cbdd7bb9e53.jpeg)
-![WhatsApp Image 2023-03-23 at 11 53 51 PM](https://user-images.githubusercontent.com/96701230/228072746-e918f708-60fe-4996-bef1-e56cf2e95d38.jpeg)
 
