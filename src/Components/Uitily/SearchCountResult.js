@@ -1,30 +1,44 @@
 import React from 'react'
-import ReactPaginate from "react-paginate";
+import UnopDropdown from "unop-react-dropdown";
+import sort from '../../images/sort.png'
+const SearchCountResult = ({title}) => {
+    const handler=()=> {
 
-const Pagination = () => {
-
-    const handlePageClick = () => { };
+    }
     return (
-        <ReactPaginate
-            breakLabel="..."
-            nextLabel="التالى"
-            onPageChange={handlePageClick}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={2}
-            pageCount={100}
-            previousLabel="السابق"
-            containerClassName={"pagination justify-content-center p-3"}
-            pageClassName={"page-item"}
-            pageLinkClassName={"page-link"}
-            previousClassName={"page-item"}
-            nextClassName={"page-item"}
-            previousLinkClassName={"page-link"}
-            nextLinkClassName={"page-link"}
-            breakClassName={"page-item"}
-            breakLinkClassName={"page-link"}
-            activeClassName={"active"}
-        />
+        <div className="d-flex justify-content-between pt-3 px-2">
+            <div className="sub-tile">{title}</div>
+            <div className="search-count-text d-flex ">
+                <UnopDropdown
+                    onAppear={handler}
+                    onDisappearStart={handler}
+                    trigger={
+                        <p className="mx-1">
+                            <img
+                                width="20px"
+                                height="20px"
+                                className="ms-1"
+                                src={sort}
+                                alt=""
+                            />
+                            ترتيب حسب
+                        </p>
+                    }
+                    delay={0}
+                    align="CENTER"
+                    hover>
+                    <div className="card-filter">
+                        <div className="border-bottom card-filter-item">الاكثر مبيعا</div>
+                        <div className="border-bottom card-filter-item">الاعلي تقييما</div>
+                        <div className="border-bottom card-filter-item">
+                            السعر من الاقل للاعلي
+                        </div>
+                        <div className=" card-filter-item">السعر من الاعلي للاقل</div>
+                    </div>
+                </UnopDropdown>
+            </div>
+        </div>
     )
 }
 
-export default Pagination
+export default SearchCountResult
