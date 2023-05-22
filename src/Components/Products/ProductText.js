@@ -10,7 +10,7 @@ const ProductText = () => {
       <Row>
         <Col md="8">
           <div className="cat-title d-inline">
-           اسود اللون مريح جا و ناعم علي البشره
+                  شورت اسود 
           <div className="cat-rate d-inline mx-3">4.5</div>
           </div>
         </Col>
@@ -41,13 +41,13 @@ const ProductText = () => {
       <Row className="mt-2">
         <Col md="10">
           <div className="product-description d-inline">
-        شورت رياضي مريح جدا
+        شورت رياضي 
           </div>
         </Col>
       </Row>
       <Row className="mt-4">
         <Col md="12">
-          <div className="product-price d-inline px-3 py-3 border">34000 جنية</div>
+          <div className="product-price d-inline px-3 py-3 border">340 جنية</div>
           <div className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
         </Col>
       </Row>
