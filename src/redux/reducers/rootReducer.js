@@ -4,3 +4,4 @@ import categoryReducer from './categoryReducer'//imports the categoryReducer fro
 export default combineReducers ({//exports a default function
     allCategory:categoryReducer ,//the object has  allCategory(property) which represents a piece of state managed by the categoryReducer.
 }) 
+///root reducer
