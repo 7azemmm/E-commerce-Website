@@ -35,7 +35,7 @@ const ProductCard = () => {
                 <Card.Body>
                     <Card.Title>
                         <div className="card-title">
-                       شورت اسود مريح
+                       شورت اسود 
                         </div>
                     </Card.Title>
                     <Card.Text>
@@ -51,7 +51,7 @@ const ProductCard = () => {
                                 <div className="card-rate mx-2">4.5</div>
                             </div>
                             <div className="d-flex">
-                                <div className="card-price">880</div>
+                                <div className="card-price">340</div>
                                 <div className="card-currency mx-1">جنيه</div>
                             </div>
                         </div>

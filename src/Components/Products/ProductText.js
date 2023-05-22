@@ -10,7 +10,7 @@ const ProductText = () => {
       <Row>
         <Col md="8">
           <div className="cat-title d-inline">
-                  شورت اسود 
+                     شورت اسود رياضي خامه ناعمه
           <div className="cat-rate d-inline mx-3">4.5</div>
           </div>
         </Col>
