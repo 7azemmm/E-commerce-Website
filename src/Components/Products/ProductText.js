@@ -5,7 +5,7 @@ const ProductText = () => {
     return (
         <div>
       <Row className="mt-2">
-        <div className="cat-text">الالكترونيات :</div>
+        <div className="cat-text">ملابس</div>
       </Row>
       <Row>
         <Col md="8">
