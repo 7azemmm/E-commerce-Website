@@ -1,23 +1,28 @@
-import React from 'react'
-import { Container, Row } from 'react-bootstrap';
+import React, { useEffect } from 'react'
+import { Container, Row, Spinner } from 'react-bootstrap';
 import SubTiltle from '../Uitily/SubTiltle'
 import CategoryCard from './../Category/CategoryCard';
-import short from "../../images/shorts4.png";
-import tshirt from "../../images/t-shirts16.png";
-import jeans from "../../images/jean11.png";
-import shirt from "../../images/shirt7.png";
-
+import HomeCategoryHook from '../../hook/category/home-category-hook'
 
 const HomeCategory = () => {
+
+    const [category, loading, colors] = HomeCategoryHook();
+
     return (
         <Container>
             <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
             <Row className='my-2 d-flex justify-content-between'>
-                <CategoryCard title=" شورت" img={short} background="#F4DBA4" />
-                <CategoryCard title="تيشيرت " img={tshirt} background="#F4DBA4" />
-                <CategoryCard title=" جينز" img={jeans} background="#F4DBA4" />
-                <CategoryCard title="شيرت " img={shirt} background="#F4DBA4" />
-                
+                {
+                    loading === false ? (
+                        category.data ? (
+                            category.data.slice(0, 5).map((item, index) => {
+                                return (<CategoryCard key={index} title={item.name} img={item.image} background={colors[index]} />)
+                            })
+                        ) : <h4>لا يوجد تصنيفات</h4>
+                    ) : <Spinner animation="border" variant="primary" />
+
+                }
+
             </Row>
         </Container>
     )
