@@ -19,6 +19,20 @@ exports.getCategories=asyncHandler(async(req,res)=>{
  });
     
 
+ //@desc   get specific category by id
+ //@route  GET /api/v1/categories/:id
+ //@access public
+ exports.getCategory=asyncHandler(async(req,res)=>{
+
+    const{id}=req.params;
+    const category=await categoryModel.findById(id);
+    if(!category){
+       
+        res.status(404).json({msg:`no category found for this id ${id}`});
+    }
+    res.status(200).json({data:category});
+ 
+ });
 
 
 
