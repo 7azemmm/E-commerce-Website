@@ -72,3 +72,19 @@ exports.getCategories=asyncHandler(async(req,res)=>{
 
 
     });
+
+    //@desc delete specific category 
+    //@route  DELETE /api/v1/categories/:id    
+    //@access  private
+    exports.deleteCategory=asyncHandler(async(req,res)=>{
+
+ const {id}=req.params;
+ 
+ const category= await categoryModel.findByIdAndDelete(id);
+ if(!category){
+    res.status(404).json({msg:`no category found for this id ${id}`});
+ }
+ res.status(204).send(); // 204 status code means that no contet as the item deleted succefully
+
+
+});

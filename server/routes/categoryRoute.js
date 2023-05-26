@@ -3,7 +3,8 @@ const express=require('express');
 const{getCategories,
      getCategory,
      createCategories,
-     updateCategory
+     updateCategory,
+     deleteCategory
     }=require('../services/categoryService')
 
 const router=express.Router();
@@ -12,6 +13,7 @@ const router=express.Router();
 router.route('/').get(getCategories).post(createCategories);
 router.route('/:id').get(getCategory);
 router.route('/:id').put(updateCategory);
+router.route('/:id').delete(deleteCategory);
 
 
 
