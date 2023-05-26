@@ -9,11 +9,16 @@ const asyncHandler = require('express-async-handler');
 exports.getCategories=asyncHandler(async(req,res)=>{
      
    
+     //pagination
+     const page= req.query.page*1 || 1; // to get the value of the page query parameter from the request URL. If the page query parameter is present in the URL, it will be multiplied by 1 to convert it to a number.
+     const limit=req.query.limit*1 || 5;
+     const skip=(page-1)*limit;
+     const categories= await categoryModel.find({}).skip(skip).limit(limit);
+     res.status(200).json({results: categories.length,page, data: categories});
+     
+ });
     
-    const categories= await categoryModel.find({});
-    res.status(200).json({results: categories.length, data: categories});
-    
-});
+
 
 
 
