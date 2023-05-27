@@ -41,6 +41,27 @@ export const getAllBrandPage = (page) => async (dispatch) => {
   }
 }
 
+// Action creator: Create a new brand
+export const createBrand = (formData) => async (dispatch) => {
+  try {
+    // Call the custom hook useInsertDataWithImage to send the formData and create a new brand
+    const response = await useInsertDataWithImage(`/api/v1/brands`, formData);
+
+    // Dispatch the created brand to the Redux store using the CREATE_BRAND type
+    dispatch({
+      type: CREATE_BRAND,
+      payload: response,
+      loading: true
+    })
+  } catch (e) {
+    // Dispatch an error action if an error occurs during the API request
+    dispatch({
+      type: GET_ERROR,
+      payload: "Error " + e,
+    })
+  }
+}
+
 
 
 
