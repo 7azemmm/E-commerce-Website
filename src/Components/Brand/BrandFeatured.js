@@ -1,27 +1,35 @@
 import React from 'react'
-import { Container, Row } from 'react-bootstrap'
+import { Container, Spinner, Row } from 'react-bootstrap'
 import SubTiltle from '../Uitily/SubTiltle'
 import BrandCard from './BrandCard'
-import brand1 from "../../images/zara.png";
-import brand2 from "../../images/puma.png";
-import brand3 from "../../images/nike.png";
-import brand4 from "../../images/adidas.png";
-import brand5 from "../../images/gucci.png";
-import brand6 from "../../images/armani.png";
+import brand1 from "../../images/brand1.png";
+import HomeBrandHook from '../../hook/brand/home-brand-hook'
 
 const BrandFeatured = ({ title, btntitle }) => {
+
+    const [brand, loading] = HomeBrandHook(); //responsible for fetching data related to brands for the home page.
+
+
+
     return (
         <Container>
+
+        {/*Rendering the SubTiltle component with the provided title, btntitle, and pathText*/}
             <SubTiltle title={title} btntitle={btntitle} pathText="/allbrand" />
             <Row className='my-1 d-flex justify-content-between'>
-                <BrandCard img={brand1} />
-                <BrandCard img={brand2} />
-                <BrandCard img={brand3} />
-                <BrandCard img={brand4} />
-                <BrandCard img={brand5} />
-                <BrandCard img={brand6} />
-
+                {
+                    loading === false ? (
+                        brand.data ? (
+                            brand.data.slice(0, 5).map((item, index) => {
+                                return (<BrandCard key={index} img={item.image} />)
+                            })
+                        ) : <h4>لا يوجد ماركات</h4>
+                    ) : <Spinner animation="border" variant="primary" />
+                }
             </Row>
+
+
+
         </Container>
     )
 }
