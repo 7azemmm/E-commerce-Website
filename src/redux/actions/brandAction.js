@@ -22,4 +22,26 @@ export const getAllBrand = (limit) => async (dispatch) => {
   }
 }
 
+// Action creator: Fetch brands with pagination
+export const getAllBrandPage = (page) => async (dispatch) => {
+  try {
+    const response = await useGetData(`/api/v1/brands?limit=4&page=${page}`);
+
+    // Dispatch the fetched brands to the Redux store using the GET_ALL_BRAND type
+    dispatch({
+      type: GET_ALL_BRAND,
+      payload: response,
+    })
+  } catch (e) {
+    
+    dispatch({
+      type: GET_ERROR,
+      payload: "Error " + e,
+    })
+  }
+}
+
+
+
+
 
