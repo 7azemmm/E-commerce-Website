@@ -7,3 +7,7 @@ export const CREATE_CATEGORY = "CREATE_CATEGORY";
 // Define and export a constant variable for GET_ERROR
 export const GET_ERROR = "GET_ERROR";
 //gfuy
+// Define and export a constant variable for GET_ALL_GET_ALL_BRAND
+export const GET_ALL_BRAND = "GET_ALL_BRAND"
+// Define and export a constant variable for creating the brands
+export const CREATE_BRAND = "CREATE_BRAND"
