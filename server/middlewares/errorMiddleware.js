@@ -14,20 +14,13 @@ const sendErrorForProd = (err, res) => //send the error with only status code an
     message: err.message,
   });
 
-const handleJwtInvalidSignature = () =>
-  new ApiError('Invalid token, please login again..', 401);
-
-const handleJwtExpired = () =>
-  new ApiError('Expired token, please login again..', 401);
-
 const globalError = (err, req, res, next) => {//global error middleware that handles express errors 
   err.statusCode = err.statusCode || 500; //if it has status code ok else it's 500
   err.status = err.status || 'error';//if it has error status ok else it is  "error" 
   if (process.env.NODE_ENV === 'development') { //check if we are in the devolpment mode use this function
     sendErrorForDev(err, res);
   } else {
-    if (err.name === 'JsonWebTokenError') err = handleJwtInvalidSignature();
-    if (err.name === 'TokenExpiredError') err = handleJwtExpired();
+    
     sendErrorForProd(err, res);//calling this function as we are in production mode
   }
 };
