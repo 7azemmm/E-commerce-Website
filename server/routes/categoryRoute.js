@@ -9,6 +9,10 @@ const{getCategories,
 
 const router=express.Router();
 
+const subCategoryRoute= require('./subCategoryRoute');
+
+router.use('/:categoryId/subcategories',subCategoryRoute);
+
 
 router.route('/').get(getCategories).post(createCategories);
 router.route('/:id').get(getCategory);
