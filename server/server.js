@@ -8,6 +8,7 @@ dotenv.config({path:'config.env'});
 
 const dbConection=require('./config/database')
 const categoryRoute=require('./routes/categoryRoute')
+const globalError= require('./middlewares/errorMiddleware')
 const ApiError= require('./utils/apiError');
 // connect with db
 
@@ -46,21 +47,8 @@ app.all('*',(req,res,next)=>{
 
 
 // global error handling middleware
-app.use((err,req,res,next)=>{ // middle ware to get any error occured and send it in form of json + error handling middleware
-
-   err.statusCode= err.statusCode || 500;
-   err.status= err.status || 'error';
-
-
-
-  res.status(400).json({
-    status: err.status,
-    error: err,
-    message: err.message,
-    stack: err.stack,
-  });
-
-});
+// middle ware to get any error occured and send it in form of json + error handling middleware
+app.use(globalError);
 
 
 
