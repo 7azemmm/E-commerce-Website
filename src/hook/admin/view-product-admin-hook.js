@@ -35,3 +35,5 @@ try {
 return [items, pagination, onPress]
 
 }
+
+export default ViewProductAdminHook
