@@ -1,29 +1,37 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Multiselect from 'multiselect-react-dropdown';
 import avatar from '../../images/avatar.png'
 import add from '../../images/add.png'
+import MultiImageInput from 'react-multiple-image-input';
+
+import { CompactPicker } from 'react-color'
+import { ToastContainer } from 'react-toastify';
+import AdminAddProductsHook from './../../hook/products/add-products-hook';
+
 const AdminAddProducts = () => {
 
-    const onSelect = () => {
-
-    }
-    const onRemove = () => {
-
-    }
-
-    const options = [
-        { name: "ملابس", id: 1 } 
-    ];
-
+    const [onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName, showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor, onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName] =
+        AdminAddProductsHook();
+        
     return (
         <div>
             <Row className="justify-content-start ">
                 <div className="admin-content-text pb-4"> اضافه منتج جديد</div>
                 <Col sm="8">
                     <div className="text-form pb-2"> صور للمنتج</div>
-                    <img src={avatar} alt="" height="100px" width="120px" />
+
+                    <MultiImageInput
+                        images={images}
+                        setImages={setImages}
+                        theme={"light"}
+                        allowCrop={false}
+                        max={4}
+                    />
+
                     <input
+                        value={prodName}
+                        onChange={onChangeProdName}
                         type="text"
                         className="input-form d-block mt-3 px-3"
                         placeholder="اسم المنتج"
@@ -33,27 +41,43 @@ const AdminAddProducts = () => {
                         rows="4"
                         cols="50"
                         placeholder="وصف المنتج"
+                        value={prodDescription}
+                        onChange={onChangeDesName}
                     />
                     <input
                         type="number"
                         className="input-form d-block mt-3 px-3"
                         placeholder="السعر قبل الخصم"
+                        value={priceBefore}
+                        onChange={onChangePriceBefor}
                     />
                     <input
                         type="number"
                         className="input-form d-block mt-3 px-3"
-                        placeholder="سعر المنتج"
+                        placeholder="السعر بعد الخصم"
+                        value={priceAftr}
+                        onChange={onChangePriceAfter}
+                    />
+                    <input
+                        type="number"
+                        className="input-form d-block mt-3 px-3"
+                        placeholder="الكمية المتاحة"
+                        value={qty}
+                        onChange={onChangeQty}
                     />
                     <select
-                        name="languages"
-                        id="lang"
+                        name="cat"
+                        onChange={onSeletCategory}
                         className="select input-form-area mt-3 px-2 ">
-                        <option value="val"> جينز</option>
-                        <option value="val"> جينز</option>
-                        <option value="val2"> شورت</option>
-                        <option value="val2">تيشيرت </option>
-                        <option value="val2"> شيرت</option>
-                        <option value="val2"> هودي</option>
+                        <option value="0">التصنيف الرئيسي</option>
+                        {
+                            category.data ? (category.data.map((item,index) => {
+                                return (
+                                    <option key={index} value={item._id}>{item.name}</option>
+                                )
+                            })) : null
+
+                        }
                     </select>
 
                     <Multiselect
@@ -67,33 +91,48 @@ const AdminAddProducts = () => {
                     />
                     <select
                         name="brand"
-                        id="brand"
+                        onChange={onSeletBrand}
                         className="select input-form-area mt-3 px-2 ">
-                        <option value="val">زارا</option>
-                        <option value="val2">  اديداس</option>
-                        <option value="val2"> بوما </option>
-                        <option value="val2">شانيل </option>
+                        <option value="0">اختر ماركة</option>
+                        {
+                            brand.data ? (brand.data.map((item,index) => {
+                                return (
+                                    <option key={index} value={item._id}>{item.name}</option>
+                                )
+                            })) : null
+
+                        }
                     </select>
                     <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
                     <div className="mt-1 d-flex">
-                        <div
-                            className="color ms-2 border  mt-1"
-                            style={{ backgroundColor: "#E52C2C" }}></div>
-                        <div
-                            className="color ms-2 border mt-1 "
-                            style={{ backgroundColor: "white" }}></div>
-                        <div
-                            className="color ms-2 border  mt-1"
-                            style={{ backgroundColor: "black" }}></div>
-                        <img src={add} alt="" width="30px" height="35px" className="" />
+                        {
+                            colors.length >= 1 ? (
+                                colors.map((color, index) => {
+                                    return (
+                                        <div key={index}
+                                            onClick={() => removeColor(color)}
+                                            className="color ms-2 border  mt-1"
+                                            style={{ backgroundColor: color }}></div>
+                                    )
+                                })
+
+                            ) : null
+                        }
+
+                        <img onClick={onChangeColor} src={add} alt="" width="30px" height="35px" style={{ cursor: 'pointer' }} />
+                        {
+                            showColor === true ? <CompactPicker onChangeComplete={handelChangeComplete} /> : null
+                        }
+
                     </div>
                 </Col>
             </Row>
             <Row>
                 <Col sm="8" className="d-flex justify-content-end ">
-                    <button className="btn-save d-inline mt-2 ">حفظ التعديلات</button>
+                    <button onClick={handelSubmit} className="btn-save d-inline mt-2 ">حفظ التعديلات</button>
                 </Col>
             </Row>
+            <ToastContainer />
         </div>
     )
 }
