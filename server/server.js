@@ -4,6 +4,8 @@ const dotenv= require('dotenv');
 
 const morgan= require('morgan');
 
+const productRoute=require('./routes/productRoute');
+
 dotenv.config({path:'config.env'});
 
 const dbConection=require('./config/database');
@@ -32,7 +34,7 @@ if (process.env.NODE_ENV === 'development' ){
 
 
 // Mount Routes*********************
-
+app.use('/api/v1/products', productRoute );
 app.use('/api/v1/categories', categoryRoute);
 app.use('/api/v1/subCategories',subCategoryRoute);
 app.use('/api/v1/brands', brandRoute);
