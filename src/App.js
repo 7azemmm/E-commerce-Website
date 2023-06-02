@@ -25,6 +25,7 @@ import UserEditAddressPage from './Page/User/UserEditAddressPage';
 import UserProfilePage from "./Page/User/UserProfilePage";
 import AdminEditProductsPage from './Page/Admin/AdminEditProductsPage';
 import ForgetPasswordPage from "./Page/Auth/ForgetPasswordPage";
+import VerifyPasswordPage from "./Page/Auth/VerifyPasswordPage";//
 
 
 
@@ -58,6 +59,7 @@ function App() {
           <Route path="/user/profile" element={<UserProfilePage />} />
           <Route path="/admin/editproduct/:id" element={<AdminEditProductsPage />} />
           <Route path="/user/forget-password" element={<ForgetPasswordPage />} />
+          <Route path="/user/verify-code" element={<VerifyPasswordPage />} />
 
         </Routes>
       </BrowserRouter>
