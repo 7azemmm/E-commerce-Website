@@ -1,5 +1,5 @@
 const factory = require('./handlersFactory');
-const Brand = require('../models/brandModel');
+const Brand = require('../models/brandsModel');
 
 // @desc    Get list of brands
 // @route   GET /api/v1/brands
