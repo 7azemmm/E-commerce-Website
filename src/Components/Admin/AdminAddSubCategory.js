@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 import { ToastContainer } from 'react-toastify';
-import addSubcategoryhook from './../../hook/subcategory/add-subcategory-hook';
+import AddSubcategoryhook from './../../hook/subcategory/add-subcategory-hook';
 
 const AdminAddSubCategory = () => {
-    const [id, name, loading, category, subcategory, handelChange, handelSubmit, onChangeName] = addSubcategoryhook();
+    const [id, name, loading, category, subcategory, handelChange, handelSubmit, onChangeName] = AddSubcategoryhook();
 
     return (
         <div>
