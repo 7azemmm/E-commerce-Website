@@ -21,3 +21,43 @@ export const createNewUser = (data) => async (dispatch) => {
         })
     }
 }
+
+
+
+//login  user 
+export const loginUser = (data) => async (dispatch) => {
+    try {
+        const response = await useInsertData(`/api/v1/auth/login`, data);
+        dispatch({
+            type: LOGIN_USER,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: LOGIN_USER,
+            payload: e.response,
+        })
+    }
+}
+
+
+//login  user 
+export const getLoggedUser = () => async (dispatch) => {
+    try {
+        const response = await useGetDataToken(`/api/v1/users/getMe`);
+        dispatch({
+            type: GET_CURERNT_USER,
+            payload: response,
+            loading: true
+        })
+
+    } 
+    catch (e) {
+        dispatch({
+            type: GET_CURERNT_USER,
+            payload: e.response,
+        })
+    }
+}
