@@ -1,10 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const slugify=require('slugify');
 const Product= require('../models/productModel');
-
-
 const ApiError=require('../utils/apiError');
-
 
 // @desc   get list of products
 // @route  GET /api/v1/products
@@ -52,36 +49,18 @@ exports.getProducts=asyncHandler(async(req,res)=>{
          if(!product){
            
             return next( new ApiError(`no product found for this id: ${id}`,404));
-
-
          }
          res.status(200).json({data:product});
      
-     
-     
-     
          });
-
-
-
-
-
-
 
 // @desc   create product
 // @route  POST /api/v1/products
 //@access  private
 exports.createProduct= asyncHandler(async(req,res)=>{
     req.body.slug=slugify(req.body.title); // slug in the body 
-    
-
-  
-    const product= await Product.create(req.body);  //req.body is an object 
+     const product= await Product.create(req.body);  //req.body is an object 
     res.status(201).json({ data: product});
-
-   
-
- 
 
 });
 
@@ -89,9 +68,8 @@ exports.createProduct= asyncHandler(async(req,res)=>{
 //@route  DELETE /api/v1/products/:id    
 //@access  private
     exports.deleteProduct=asyncHandler(async(req,res,next)=>{
-
+  
         const {id}=req.params;
-        
         const product= await Product.findByIdAndDelete(id);
         if(!product){
           // res.status(404).json({msg:`no product found for this id ${id}`});

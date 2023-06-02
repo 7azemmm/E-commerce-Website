@@ -50,41 +50,5 @@ exports.getCategories=asyncHandler(async(req,res)=>{
     });
 
 
-    //@desc update specific category 
-    //@route  PUT /api/v1/categories/:id    
-    //@access  private
-    exports.updateCategory=asyncHandler(async(req,res)=>{
 
-   const {id}=req.params;
-   const {name}=req.body;
-
-   const category= await categoryModel.findOneAndUpdate(
-    {_id:id},
-    {name},
-    {new:true}  // to return category after making an update
-    );
-    if(!category){
-        res.status(404).json({msg:` no category found for this id ${id} `});
-    }
-    res.status(200).json({data:category});
-
-
-
-
-    });
-
-    //@desc delete specific category 
-    //@route  DELETE /api/v1/categories/:id    
-    //@access  private
-    exports.deleteCategory=asyncHandler(async(req,res)=>{
-
- const {id}=req.params;
- 
- const category= await categoryModel.findByIdAndDelete(id);
- if(!category){
-    res.status(404).json({msg:`no category found for this id ${id}`});
- }
- res.status(204).send(); // 204 status code means that no contet as the item deleted succefully
-
-
-});
+   

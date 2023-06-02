@@ -29,19 +29,3 @@ exports.createCategoryValidator=[
 ];
 
 
-exports.deleteCategoryValidator=[
-    // rules 
-    check('id').isMongoId().withMessage(`invalid category id format`),
-    // check errors in rules 
-    validatorMiddleware,
-
-    
-
-];
-exports.updateCategoryValidator=[
-    // rules 
-    check('id').isMongoId().withMessage(`invalid category id format`),
-    // check errors in rules 
-    validatorMiddleware,
-
-];
