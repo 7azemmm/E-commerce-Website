@@ -1,6 +1,6 @@
 
 import { useInsertDataWithImage } from '../../hooks/useInsertData';
-import { DELETE_PRODUCTS,UPDATE_PRODUCTS, CREATE_PRODUCTS, GET_PRODUCT_LIKE, GET_ALL_PRODUCTS, GET_PRODUCT_DETALIS, GET_ERROR } from '../type'
+import { DELETE_PRODUCTS, UPDATE_PRODUCTS, CREATE_PRODUCTS, GET_PRODUCT_LIKE, GET_ALL_PRODUCTS, GET_PRODUCT_DETALIS, GET_ERROR } from '../type'
 import useGetData from './../../hooks/useGetData';
 import useDeleteData from './../../hooks/useDeleteData';
 import { useInUpdateDataWithImage } from '../../hooks/useUpdateData';
@@ -44,7 +44,7 @@ export const getAllProducts = (limit) => async (dispatch) => {
 
 
 //get all products with pagination with pages number
-export const getAllProductsPage = (page,limit) => async (dispatch) => {
+export const getAllProductsPage = (page, limit) => async (dispatch) => {
     try {
         const response = await useGetData(`/api/v1/products?page=${page}&limit=${limit}`);
         dispatch({
@@ -60,6 +60,26 @@ export const getAllProductsPage = (page,limit) => async (dispatch) => {
         })
     }
 }
+
+//get all products with query string
+export const getAllProductsSearch = (queryString) => async (dispatch) => {
+    try {
+        const response = await useGetData(`/api/v1/products?${queryString}`);
+        dispatch({
+            type: GET_ALL_PRODUCTS,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: GET_ERROR,
+            payload: "Error " + e,
+        })
+    }
+}
+
+
 
 //get one product with id
 export const getOneProduct = (id) => async (dispatch) => {
@@ -117,9 +137,9 @@ export const deleteProducts = (id) => async (dispatch) => {
 }
 
 //update prooduct with id
-export const updateProducts = (id,data) => async (dispatch) => {
+export const updateProducts = (id, data) => async (dispatch) => {
     try {
-        const response = await useInUpdateDataWithImage(`/api/v1/products/${id}`,data);
+        const response = await useInUpdateDataWithImage(`/api/v1/products/${id}`, data);
         dispatch({
             type: UPDATE_PRODUCTS,
             payload: response,
