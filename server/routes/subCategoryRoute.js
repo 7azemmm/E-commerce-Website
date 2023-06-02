@@ -15,7 +15,7 @@ const {
   getSubCategoryValidator,
   updateSubCategoryValidator,
   deleteSubCategoryValidator,
-} = require('../utils/validators/subCategoryValidators');
+} = require('../utils/validators/subCategoryValidator');
 
 // mergeParams: Allow us to access parameters on other routers (nested route)
 // ex: We need to access categoryId from category router

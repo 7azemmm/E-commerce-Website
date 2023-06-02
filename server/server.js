@@ -13,7 +13,7 @@ const categoryRoute=require('./routes/categoryRoute');
 const subCategoryRoute=require('./routes/subCategoryRoute');
 const globalError= require('./middlewares/errorMiddleware');
 const ApiError= require('./utils/apiError');
-const brandRoute=require('./routes/brandRoute');
+const brandRoute=require('./routes/brandsRoute');
 // connect with db
 
 dbConection();
