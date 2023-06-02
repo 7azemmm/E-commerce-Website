@@ -3,6 +3,7 @@ import { useInsertData } from '../../hooks/useInsertData'
 import { useGetData, useGetDataToken } from './../../hooks/useGetData';
 import { useInsUpdateData } from '../../hooks/useUpdateData';
 
+
 //create new user 
 export const createNewUser = (data) => async (dispatch) => {
     try {
@@ -57,6 +58,43 @@ export const getLoggedUser = () => async (dispatch) => {
     catch (e) {
         dispatch({
             type: GET_CURERNT_USER,
+            payload: e.response,
+        })
+    }
+}
+
+// forget password 
+export const forgetPassword = (data) => async (dispatch) => {
+    try {
+        const response = await useInsertData(`/api/v1/auth/forgotPasswords`, data);
+        dispatch({
+            type: FOREGT_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: FOREGT_PASSWORD,
+            payload: e.response,
+        })
+    }
+}
+
+
+// verify reset password 
+export const verifyPassword = (data) => async (dispatch) => {
+    try {
+        const response = await useInsertData(`/api/v1/auth/verifyResetCode`, data);
+        dispatch({
+            type: VERIFY_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: VERIFY_PASSWORD,
             payload: e.response,
         })
     }
