@@ -25,16 +25,20 @@ import UserEditAddressPage from './Page/User/UserEditAddressPage';
 import UserProfilePage from "./Page/User/UserProfilePage";
 import AdminEditProductsPage from './Page/Admin/AdminEditProductsPage';
 import ForgetPasswordPage from "./Page/Auth/ForgetPasswordPage";
-import VerifyPasswordPage from "./Page/Auth/VerifyPasswordPage";//
+import VerifyPasswordPage from "./Page/Auth/VerifyPasswordPage";
+import RsetPasswordPage from "./Page/Auth/ResetPasswordPage";
 
 
 
 function App() {
+
   return (
+    
     <div className="font" >
       <NavBarLogin />
       <BrowserRouter>
         <Routes>
+
           <Route index element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -60,6 +64,7 @@ function App() {
           <Route path="/admin/editproduct/:id" element={<AdminEditProductsPage />} />
           <Route path="/user/forget-password" element={<ForgetPasswordPage />} />
           <Route path="/user/verify-code" element={<VerifyPasswordPage />} />
+          <Route path="/user/reset-password" element={<RsetPasswordPage />} />
 
         </Routes>
       </BrowserRouter>
