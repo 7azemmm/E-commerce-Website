@@ -1,10 +1,3 @@
-// Define and export a constant variable for GET_ALL_CATEGORY
-// Define and export a constant variable for CREATE_CATEGORY
-// Define and export a constant variable for GET_ERROR
-// Define and export a constant variable for GET_ALL_GET_ALL_BRAND
-// Define and export a constant variable for creating the brands
-// Define and export a constant variable for creating the sub categories
-
 export const GET_ALL_CATEGORY = "GET_ALL_CATEGORY"
 export const CREATE_CATEGORY = "CREATE_CATEGORY"
 export const GET_ERROR = "GET_ERROR"
@@ -25,3 +18,4 @@ export const LOGIN_USER = "LOGIN_USER"
 export const GET_CURERNT_USER = "GET_CURERNT_USER"
 export const FOREGT_PASSWORD = "FOREGT_PASSWORD"
 export const VERIFY_PASSWORD = "VERIFY_PASSWORD"
+export const RESET_PASSWORD = "RESET_PASSWORD"
