@@ -7,6 +7,7 @@ import { useInsUpdateData } from '../../hooks/useUpdateData';
 //create new user 
 export const createNewUser = (data) => async (dispatch) => {
     try {
+        
  // Use the useInsertData function to send a POST request with the provided data
         const response = await useInsertData(`/api/v1/auth/signup`, data);
         dispatch({
@@ -22,7 +23,6 @@ export const createNewUser = (data) => async (dispatch) => {
         })
     }
 }
-
 
 
 //login  user 
@@ -63,6 +63,7 @@ export const getLoggedUser = () => async (dispatch) => {
     }
 }
 
+
 // forget password 
 export const forgetPassword = (data) => async (dispatch) => {
     try {
@@ -95,6 +96,25 @@ export const verifyPassword = (data) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: VERIFY_PASSWORD,
+            payload: e.response,
+        })
+    }
+}
+
+
+// reset  passwrod 
+export const resetPassword = (data) => async (dispatch) => {
+    try {
+        const response = await useInsUpdateData(`/api/v1/auth/resetPassword`, data);
+        dispatch({
+            type: RESET_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: RESET_PASSWORD,
             payload: e.response,
         })
     }
