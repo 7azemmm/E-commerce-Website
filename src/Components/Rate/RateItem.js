@@ -1,25 +1,37 @@
-import React from 'react'
-import { Row, Col } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Row, Col, Modal, Button } from 'react-bootstrap'
 import rate from '../../images/rate.png'
-const RateItem = () => {
-    return (
-        <div>
-            <Row className="mt-3">
-                <Col className="d-felx me-5">
-                    <div className="rate-name  d-inline ms-2"> فتحي ناصف</div>
-                    <img className="" src={rate} alt="" height="16px" width="16px" />
-                    <div className="cat-rate  d-inline  p-1 pt-2">4.3</div>
-                </Col>
-            </Row>
-            <Row className="border-bottom mx-2">
-                <Col className="d-felx me-4 pb-2">
-                    <div className="rate-description  d-inline ms-2">
-                        منتج مناسب سعره للوقت الحالي وجه كويس جدا ومعاه دراع زيادة
-                    </div>
-                </Col>
-            </Row>
-        </div>
-    )
+import deleteicon from '../../images/delete.png'
+import editicon from '../../images/edit.png'
+import { ToastContainer } from 'react-toastify';
+
+
+import DeleteRateHook from '../../hook/review/delete-rate-hook'
+import EditRateHook from '../../hook/review/edit-rate-hook'
+import ReactStars from 'react-rating-stars-component'
+const RateItem = ({ review }) => {
+
+
+
+    const [isUser, handelDelete, handleShow, handleClose, showDelete] = DeleteRateHook(review);
+    const [showEdit, handleCloseEdit, handleShowEdit, handelEdit, onChangeRateText, newRateText, OnChangeRateValue, newRateValue] = EditRateHook(review)
+
+    const setting = {
+        size: 20,
+        count: 5,
+        color: "#979797",
+        activeColor: "#ffc107",
+        value: newRateValue,
+        a11y: true,
+        isHalf: true,
+        emptyIcon: <i className="far fa-star" />,
+        halfIcon: <i className="fa fa-star-half-alt" />,
+        filledIcon: <i className="fa fa-star" />,
+        onChange: newValue => {
+            OnChangeRateValue(newValue);
+        }
+    };
 }
+
 
 export default RateItem
