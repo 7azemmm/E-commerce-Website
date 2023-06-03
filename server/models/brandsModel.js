@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 //create schema
-const Brands= new mongoose.Schema({
+const brandSchema= new mongoose.Schema({
     name:{
       type: String,
       required: true,
@@ -35,7 +35,7 @@ const Brands= new mongoose.Schema({
     });
     
     // change schema to model
-    const BrandsModel= mongoose.model('BrandsModel',Brands);
+    const BrandsModel= mongoose.model('BrandsModel',brandSchema);
     
 
   //export for Brands model

@@ -25,12 +25,12 @@ const category= new mongoose.Schema({
       }
     };
     // findOne, findAll and update
-    categorySchema.post('init', (doc) => {
+    category.post('init', (doc) => {
       setImageURL(doc);
     });
     
     // create
-    categorySchema.post('save', (doc) => {
+    category.post('save', (doc) => {
       setImageURL(doc);
     });
     
