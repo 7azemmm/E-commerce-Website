@@ -6,8 +6,8 @@ import cart from '../../images/cart.png'
 import NavbarSearchHook from './../../hook/search/navbar-search-hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedUser } from './../../redux/actions/authAction';
-
 const NavBarLogin = () => {
+    //const dispatch = useDispatch()
 
     const [OnChangeSearch, searchWord] = NavbarSearchHook()
     let word = "";
@@ -22,6 +22,7 @@ const NavBarLogin = () => {
 
     const logOut = () => {
         localStorage.removeItem("user")
+        localStorage.removeItem("token")
         setUser('')
     }
 
@@ -76,6 +77,5 @@ const NavBarLogin = () => {
         </Navbar>
     )
 }
-
 
 export default NavBarLogin
