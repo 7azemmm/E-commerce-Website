@@ -20,9 +20,18 @@ const reviewReducer = (state = inital, action) => {
             allReviewProduct: action.payload,
             loading: false,
         }
+        case DELETE_REVIEW:
+            return {
+                ...state,
+                deleteReview: action.payload,
+            }
+        case UPDATE_REVIEW:
+            return {
+                ...state,
+                updateReview: action.payload,
+            }
         default:
             return state;
     }
 }
-
 export default reviewReducer
