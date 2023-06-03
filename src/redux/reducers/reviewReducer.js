@@ -20,6 +20,8 @@ const reviewReducer = (state = inital, action) => {
             allReviewProduct: action.payload,
             loading: false,
         }
+        default:
+            return state;
     }
 }
 
