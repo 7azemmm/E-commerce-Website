@@ -1,5 +1,5 @@
-import { GET_ALL_CATEGORY, GET_ERROR,GET_ONE_CATEGORY, CREATE_CATEGORY } from '../type'
-import useGetData from '../../hooks/useGetData'
+import { GET_ALL_CATEGORY, GET_ERROR, GET_ONE_CATEGORY, CREATE_CATEGORY } from '../type'
+import { useGetData } from '../../hooks/useGetData'
 import { useInsertDataWithImage } from '../../hooks/useInsertData'
 //get all category
 export const getAllCategory = (limit) => async (dispatch) => {

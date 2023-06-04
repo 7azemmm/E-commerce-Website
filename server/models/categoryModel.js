@@ -18,6 +18,21 @@ const category= new mongoose.Schema({
 
     },{timestamps:true}  // create two fields in this document created at and updated at to help in seeing the newest and oldest categories 
     );
+    const setImageURL = (doc) => {
+      if (doc.image) {
+        const imageUrl = `${process.env.BASE_URL}/categories/${doc.image}`;
+        doc.image = imageUrl;
+      }
+    };
+    // findOne, findAll and update
+    category.post('init', (doc) => {
+      setImageURL(doc);
+    });
+    
+    // create
+    category.post('save', (doc) => {
+      setImageURL(doc);
+    });
     
     // change schema to model
     const categoryModel= mongoose.model('categoryModel',category);

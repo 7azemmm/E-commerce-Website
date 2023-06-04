@@ -4,6 +4,8 @@ const dotenv= require('dotenv');
 
 const morgan= require('morgan');
 
+const productRoute=require('./routes/productRoute');
+
 dotenv.config({path:'config.env'});
 
 const dbConection=require('./config/database');
@@ -11,7 +13,7 @@ const categoryRoute=require('./routes/categoryRoute');
 const subCategoryRoute=require('./routes/subCategoryRoute');
 const globalError= require('./middlewares/errorMiddleware');
 const ApiError= require('./utils/apiError');
-const brandRoute=require('./routes/brandRoute');
+const brandRoute=require('./routes/brandsRoute');
 // connect with db
 
 dbConection();
@@ -31,14 +33,13 @@ if (process.env.NODE_ENV === 'development' ){
 }
 
 
-
-
-
 // Mount Routes*********************
-
+app.use('/api/v1/products', productRoute );
 app.use('/api/v1/categories', categoryRoute);
 app.use('/api/v1/subCategories',subCategoryRoute);
 app.use('/api/v1/brands', brandRoute);
+
+
 //if the request with a route that we do not have
 // create error and send it to the global error handler 
 app.all('*',(req,res,next)=>{
@@ -55,19 +56,14 @@ app.all('*',(req,res,next)=>{
 app.use(globalError);
 
 
-
-
-
 const PORT=process.env.PORT || 8000 ;
-app.listen(PORT, ()=>{
+const server=app.listen(PORT, ()=>{
     console.log(`app is running succefully on port ${PORT} `);
 });
 
 
 // listen on any event make an error outside express
 // handle rejection happens outside express that i can catch and handled it 
-
-
 process.on('unhandledRejection',(err)=>
 {
     console.error(`unHandledRejection error: ${err.name} | ${err.message}`)

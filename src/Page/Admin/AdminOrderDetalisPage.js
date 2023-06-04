@@ -3,7 +3,8 @@ import { Container, Row, Col } from 'react-bootstrap'
 import AdminSideBar from '../../Components/Admin/AdminSideBar'
 import AdminAllProducts from '../../Components/Admin/AdminAllProducts'
 import Pagination from '../../Components/Uitily/Pagination'
-const AdminAllProductsPage = () => {
+import AdminOrderDetalis from '../../Components/Admin/AdminOrderDetalis'
+const AdminOrderDetalisPage = () => {
     return (
         <Container >
             <Row className='py-3'>
@@ -12,12 +13,11 @@ const AdminAllProductsPage = () => {
                 </Col>
 
                 <Col sm="9" xs="10" md="10">
-                    <AdminAllProducts />
-                    <Pagination />
+                    <AdminOrderDetalis />
                 </Col>
             </Row>
         </Container>
     )
 }
 
-export default AdminAllProductsPage
+export default AdminOrderDetalisPage
