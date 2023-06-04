@@ -1,3 +1,5 @@
+rootReducer.js
+
 import { combineReducers } from 'redux'
 import categoryReducer from './categoryReducer'
 import brandReducer from './brandReducer'
@@ -8,6 +10,7 @@ import reviewReducer from './reviewReducer'
 import addToWishListReducer from './wishListReducer'
 import couponReducer from './couponReducer'
 import userAddressesReducer from './userAddressesReducer'
+import cartReducer from './cartReducer'
 export default combineReducers({
     allCategory: categoryReducer,
     allBrand: brandReducer,
@@ -17,6 +20,7 @@ export default combineReducers({
     reviewReducer: reviewReducer,
     addToWishListReducer: addToWishListReducer,
     couponReducer: couponReducer,
-    userAddressesReducer: userAddressesReducer
+    userAddressesReducer: userAddressesReducer,
+    cartReducer: cartReducer
 
 })
