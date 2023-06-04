@@ -215,9 +215,9 @@ const AdminEditProductsHook = (id) => {
         colors.map((color) => formData.append("availableColors", color))
         seletedSubID.map((item) => formData.append("subcategory", item._id))
         setTimeout(async () => {
-            // setLoading(true)
-            //   await dispatch(updateProducts(id, formData))
-            //  setLoading(false)
+             setLoading(true)
+              await dispatch(updateProducts(id, formData))
+             setLoading(false)
         }, 1000);
 
     }
@@ -228,7 +228,7 @@ const AdminEditProductsHook = (id) => {
     useEffect(() => {
 
         if (loading === false) {
-            //setCatID(0)
+            setCatID(0)
             setColors([])
             setImages([])
             setProdName('')
