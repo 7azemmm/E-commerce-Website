@@ -4,19 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createNewUser, loginUser } from '../../redux/actions/authAction';
 import { useNavigate } from 'react-router-dom'
 
-
 const LoginHook = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(true)
     const [isPress, setIsPress] = useState(false)
-
-
     const onChangeEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -26,10 +21,8 @@ const LoginHook = () => {
     }
 
     const onSubmit = async () => {
-
         setIsPress(true)
         setLoading(true)
-
         await dispatch(loginUser({
             email,
             password
@@ -38,12 +31,7 @@ const LoginHook = () => {
         setLoading(false)
         setIsPress(false)
     }
-
-
-    // retrieve the loginUser state from the Redux store
     const res = useSelector(state => state.authReducer.loginUser)
-
-
     useEffect(() => {
         if (loading === false) {
             if (res) {
@@ -55,14 +43,10 @@ const LoginHook = () => {
                     setTimeout(() => {
                         window.location.href = "/"
                     }, 1500);
-                } 
-                
-
-                else {
+                } else {
                     localStorage.removeItem("token")
                     localStorage.removeItem("user")
                 }
-
 
                 if (res.data.message === "Incorrect email or password") {
                     localStorage.removeItem("token")
@@ -70,14 +54,11 @@ const LoginHook = () => {
                     notify("كلمة السر او الايميل خطا", "error")
                 }
                 setLoading(true)
-
             }
         }
     }, [loading])
 
-
     return [email, password, loading, onChangeEmail, onChangePassword, onSubmit, isPress]
 }
-
 
 export default LoginHook

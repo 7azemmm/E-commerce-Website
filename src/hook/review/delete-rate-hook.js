@@ -49,5 +49,4 @@ const DeleteRateHook = (review) => {
 
 }
 
-
 export default DeleteRateHook

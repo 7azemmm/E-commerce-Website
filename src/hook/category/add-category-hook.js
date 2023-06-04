@@ -24,6 +24,7 @@ const AddCategoryHook = () => {
     //when image change save it 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
+            console.log(event.target.files[0])
             setImg(URL.createObjectURL(event.target.files[0]))
             setSelectedFile(event.target.files[0])
         }
