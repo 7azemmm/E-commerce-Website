@@ -1,14 +1,11 @@
-import { CREATE_NEW_USER,RESET_PASSWORD,VERIFY_PASSWORD, FOREGT_PASSWORD, GET_CURERNT_USER, LOGIN_USER } from '../type'
+import { CREATE_NEW_USER, RESET_PASSWORD, UPDATE_USER_PROFILE, VERIFY_PASSWORD, FOREGT_PASSWORD, GET_CURERNT_USER, LOGIN_USER, UPDATE_USER_PASSWORD } from '../type'
 import { useInsertData } from '../../hooks/useInsertData'
 import { useGetData, useGetDataToken } from './../../hooks/useGetData';
 import { useInsUpdateData } from '../../hooks/useUpdateData';
 
-
 //create new user 
 export const createNewUser = (data) => async (dispatch) => {
     try {
-        
- // Use the useInsertData function to send a POST request with the provided data
         const response = await useInsertData(`/api/v1/auth/signup`, data);
         dispatch({
             type: CREATE_NEW_USER,
@@ -23,7 +20,6 @@ export const createNewUser = (data) => async (dispatch) => {
         })
     }
 }
-
 
 //login  user 
 export const loginUser = (data) => async (dispatch) => {
@@ -43,7 +39,6 @@ export const loginUser = (data) => async (dispatch) => {
     }
 }
 
-
 //login  user 
 export const getLoggedUser = () => async (dispatch) => {
     try {
@@ -54,8 +49,7 @@ export const getLoggedUser = () => async (dispatch) => {
             loading: true
         })
 
-    } 
-    catch (e) {
+    } catch (e) {
         dispatch({
             type: GET_CURERNT_USER,
             payload: e.response,
@@ -64,7 +58,7 @@ export const getLoggedUser = () => async (dispatch) => {
 }
 
 
-// forget password 
+//1-foregt  passwrod 
 export const forgetPassword = (data) => async (dispatch) => {
     try {
         const response = await useInsertData(`/api/v1/auth/forgotPasswords`, data);
@@ -83,7 +77,7 @@ export const forgetPassword = (data) => async (dispatch) => {
 }
 
 
-// verify reset password 
+//2-verify  passwrod 
 export const verifyPassword = (data) => async (dispatch) => {
     try {
         const response = await useInsertData(`/api/v1/auth/verifyResetCode`, data);
@@ -102,7 +96,7 @@ export const verifyPassword = (data) => async (dispatch) => {
 }
 
 
-// reset  passwrod 
+//2-reset  passwrod 
 export const resetPassword = (data) => async (dispatch) => {
     try {
         const response = await useInsUpdateData(`/api/v1/auth/resetPassword`, data);
@@ -115,6 +109,47 @@ export const resetPassword = (data) => async (dispatch) => {
     } catch (e) {
         dispatch({
             type: RESET_PASSWORD,
+            payload: e.response,
+        })
+    }
+}
+
+
+
+//update  user data 
+export const updateUserProfileData = (body) => async (dispatch) => {
+    try {
+        const response = await useInsUpdateData(`/api/v1/users/updateMe`, body);
+        console.log(response)
+        dispatch({
+            type: UPDATE_USER_PROFILE,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: UPDATE_USER_PROFILE,
+            payload: e.response,
+        })
+    }
+}
+
+
+//update  user password
+export const updateUserPassword = (body) => async (dispatch) => {
+    try {
+        const response = await useInsUpdateData(`/api/v1/users/changeMyPassword`, body);
+        console.log(response)
+        dispatch({
+            type: UPDATE_USER_PASSWORD,
+            payload: response,
+            loading: true
+        })
+
+    } catch (e) {
+        dispatch({
+            type: UPDATE_USER_PASSWORD,
             payload: e.response,
         })
     }
