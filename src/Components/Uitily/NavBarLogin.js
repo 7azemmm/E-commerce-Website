@@ -6,6 +6,7 @@ import cart from '../../images/cart.png'
 import NavbarSearchHook from './../../hook/search/navbar-search-hook';
 import { useDispatch, useSelector } from 'react-redux';
 import { getLoggedUser } from './../../redux/actions/authAction';
+import GetAllUserCartHook from './../../hook/cart/get-all-user-cart-hook';
 const NavBarLogin = () => {
     //const dispatch = useDispatch()
 
@@ -17,7 +18,7 @@ const NavBarLogin = () => {
     const [user, setUser] = useState('');
     useEffect(() => {
         if (localStorage.getItem("user") != null)
-           setUser(JSON.parse(localStorage.getItem("user")))
+            setUser(JSON.parse(localStorage.getItem("user")))
     }, [])
 
     const logOut = () => {
@@ -25,6 +26,8 @@ const NavBarLogin = () => {
         localStorage.removeItem("token")
         setUser('')
     }
+
+    const [itemsNum] = GetAllUserCartHook()
 
     return (
         <Navbar className="sticky-top" bg="dark" variant="dark" expand="sm">
@@ -66,10 +69,14 @@ const NavBarLogin = () => {
                         }
 
                         <Nav.Link href='/cart'
-                            className="nav-text d-flex mt-3 justify-content-center"
+                            className="nav-text position-relative d-flex mt-3 justify-content-center"
                             style={{ color: "white" }}>
                             <img src={cart} className="login-img" alt="sfvs" />
                             <p style={{ color: "white" }}>العربه</p>
+                            <span class="position-absolute top-10 start-0 translate-middle badge rounded-pill bg-danger">
+                                {itemsNum || 0}
+                            </span>
+
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
