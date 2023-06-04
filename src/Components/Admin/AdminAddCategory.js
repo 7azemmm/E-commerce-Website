@@ -6,6 +6,7 @@ const AdminAddCategory = () => {
 
     const [img,name,loading,isPress,handelSubmit,onImageChange,onChangeName] =AddCategoryHook();
 
+    
 
     return (
         <div>
@@ -23,7 +24,7 @@ const AdminAddCategory = () => {
                                 style={{ cursor: "pointer" }}
                             />
                         </label>
-                        <input 
+                        <input
                             type="file"
                             name="photo"
                             onChange={onImageChange}

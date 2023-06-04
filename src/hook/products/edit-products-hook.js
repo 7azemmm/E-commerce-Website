@@ -55,7 +55,7 @@ const AdminEditProductsHook = (id) => {
 
     useEffect(() => {
         if (item.data) {
-
+            console.log(item.data.images)
             setImages(item.data.images)
             setProdName(item.data.title)
             setProdDescription(item.data.description)
@@ -172,7 +172,7 @@ const AdminEditProductsHook = (id) => {
             notify("من فضلك اكمل البيانات", "warn")
             return;
         }
-
+        console.log(images[0])
         let imgCover;
         if (images[0].length <= 1000) {
             convertURLtoFile(images[0]).then(val => imgCover = val)
@@ -192,6 +192,7 @@ const AdminEditProductsHook = (id) => {
                 }
             })
 
+
         const formData = new FormData();
         formData.append("title", prodName);
         formData.append("description", prodDescription);
@@ -204,37 +205,30 @@ const AdminEditProductsHook = (id) => {
         setTimeout(() => {
             formData.append("imageCover", imgCover);
             itemImages.map((item) => formData.append("images", item))
-        
         }, 1000);
 
+        setTimeout(() => {
+            console.log(imgCover)
+            console.log(itemImages)
+        }, 1000);
 
         colors.map((color) => formData.append("availableColors", color))
         seletedSubID.map((item) => formData.append("subcategory", item._id))
         setTimeout(async () => {
-            setLoading(true)
-            await dispatch(updateProducts(id, formData))
-            setLoading(false)
+            // setLoading(true)
+            //   await dispatch(updateProducts(id, formData))
+            //  setLoading(false)
         }, 1000);
 
-        setTimeout(() => {
-            window.location.reload();
-            
-        }, 2000);
-
-        
-            notify("تم التعديل بنجاح", "success")
-        
     }
-    
-  
-    
+
     //get create meesage
     const product = useSelector(state => state.allproducts.updateProducts)
 
     useEffect(() => {
 
         if (loading === false) {
-            setCatID(0)
+            //setCatID(0)
             setColors([])
             setImages([])
             setProdName('')

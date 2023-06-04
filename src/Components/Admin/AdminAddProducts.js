@@ -71,7 +71,7 @@ const AdminAddProducts = () => {
                         className="select input-form-area mt-3 px-2 ">
                         <option value="0">التصنيف الرئيسي</option>
                         {
-                            category.data ? (category.data.map((item,index) => {
+                            category.data ? (category.data.map((item, index) => {
                                 return (
                                     <option key={index} value={item._id}>{item.name}</option>
                                 )
@@ -95,7 +95,7 @@ const AdminAddProducts = () => {
                         className="select input-form-area mt-3 px-2 ">
                         <option value="0">اختر ماركة</option>
                         {
-                            brand.data ? (brand.data.map((item,index) => {
+                            brand.data ? (brand.data.map((item, index) => {
                                 return (
                                     <option key={index} value={item._id}>{item.name}</option>
                                 )

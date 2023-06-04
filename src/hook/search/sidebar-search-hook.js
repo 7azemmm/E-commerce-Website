@@ -23,13 +23,16 @@ const SidebarSearchHook = () => {
 
     //to get category
     let category = [];
-    if (allCat.data)
-        category = allCat.data
-
+    try {
+        if (allCat.data)
+            category = allCat.data
+    } catch (e) { }
     //to get category
     let brand = [];
-    if (allBrand.data)
-        brand = allBrand.data
+    try {
+        if (allBrand.data)
+            brand = allBrand.data
+    } catch (e) { }
     var queryCat = "", queryBrand = "";
     const [catChecked, setCatChecked] = useState([])
     //when user press any category

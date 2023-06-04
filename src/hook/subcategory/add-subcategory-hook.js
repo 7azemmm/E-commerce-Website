@@ -73,7 +73,7 @@ const AddSubcategoryhook = () => {
                 notify("هذا الاسم مكرر من فضلك اختر اسم اخر", "warn")
             }
             else {
-                notify("هناك مشكله فى عملية الاضافة", "error")
+                notify("هناك مشكله فى عملية الاضافة", "warn")
             }
 
             setLoading(true)

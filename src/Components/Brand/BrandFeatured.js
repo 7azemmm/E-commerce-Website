@@ -7,14 +7,12 @@ import HomeBrandHook from '../../hook/brand/home-brand-hook'
 
 const BrandFeatured = ({ title, btntitle }) => {
 
-    const [brand, loading] = HomeBrandHook(); //responsible for fetching data related to brands for the home page.
-
-
+    const [brand, loading] = HomeBrandHook();
 
     return (
         <Container>
 
-        {/*Rendering the SubTiltle component with the provided title, btntitle, and pathText*/}
+
             <SubTiltle title={title} btntitle={btntitle} pathText="/allbrand" />
             <Row className='my-1 d-flex justify-content-between'>
                 {
