@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react'
+ProductText.js
+
+import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
 import ViewProductsDetalisHook from './../../hook/products/view-products-detalis-hook';
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+
+import AddToCartHook from './../../hook/cart/add-to-cart-hook';
 
 const ProductText = () => {
   const { id } = useParams();
   const [item, images, cat, brand] = ViewProductsDetalisHook(id);
- 
+  const [colorClick, indexColor, addToCartHandel] = AddToCartHook(id,item)
 
   return (
     <div>
@@ -34,8 +39,9 @@ const ProductText = () => {
             item.availableColors ? (item.availableColors.map((color, index) => {
               return (<div
                 key={index}
-                className="color ms-2 border"
-                style={{ backgroundColor: color }}></div>)
+                onClick={() => colorClick(index, color)}
+                className="color ms-2"
+                style={{ backgroundColor: color, border: indexColor === index ? '3px solid black' : 'none' }}></div>)
             })) : null
           }
 
@@ -56,9 +62,10 @@ const ProductText = () => {
       <Row className="mt-4">
         <Col md="12">
           <div className="product-price d-inline px-3 py-3 border">{item.price} جنية</div>
-          <div className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
+          <div onClick={addToCartHandel} className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
         </Col>
       </Row>
+      <ToastContainer />
     </div>
   )
 }
