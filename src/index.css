@@ -17,7 +17,7 @@ body {
 }
 .logo {
   height: 46px;
-  width: 50px;
+  width: 100px;
 }
 .login-img {
   height: 20px;
@@ -623,6 +623,10 @@ body {
   color: white;
   border-radius: 9px;
   background-color: #272727;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
 }
 
 /* user address */
