@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react'
 import { getOneCategory } from '../../redux/actions/subcategoryAction';
 import { createProduct } from '../../redux/actions/productsAction';
@@ -151,7 +150,7 @@ const AdminAddProductsHook = () => {
         formData.append("description", prodDescription);
         formData.append("quantity", qty);
         formData.append("price", priceBefore);
-
+        formData.append("priceAfterDiscount", priceAftr);
         formData.append("category", CatID);
         formData.append("brand", BrandID);
 

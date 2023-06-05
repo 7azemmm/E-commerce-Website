@@ -1,5 +1,3 @@
-ProductText.js
-
 import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
@@ -12,7 +10,7 @@ import AddToCartHook from './../../hook/cart/add-to-cart-hook';
 const ProductText = () => {
   const { id } = useParams();
   const [item, images, cat, brand] = ViewProductsDetalisHook(id);
-  const [colorClick, indexColor, addToCartHandel] = AddToCartHook(id,item)
+  const [colorClick, indexColor, addToCartHandel] = AddToCartHook(id, item)
 
   return (
     <div>
@@ -45,6 +43,7 @@ const ProductText = () => {
             })) : null
           }
 
+          <div className="cat-text d-inline">الكمية المتاحة : {item.quantity} </div>
 
         </Col>
       </Row>
@@ -61,7 +60,11 @@ const ProductText = () => {
       </Row>
       <Row className="mt-4">
         <Col md="12">
-          <div className="product-price d-inline px-3 py-3 border">{item.price} جنية</div>
+          {item.priceAfterDiscount >= 1 ? (
+            <div className="product-price d-inline px-3 py-3 border">
+              <span style={{ textDecorationLine: 'line-through' }}> {item.price}</span> {item.priceAfterDiscount} جنية
+            </div>) : <div className="product-price d-inline px-3 py-3 border"><span> {item.price}</span> جنية </div>
+          }
           <div onClick={addToCartHandel} className="product-cart-add px-3 py-3 d-inline mx-3">اضف للعربة</div>
         </Col>
       </Row>
@@ -70,4 +73,4 @@ const ProductText = () => {
   )
 }
 
-export default ProductText
+export default ProductText
