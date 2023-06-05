@@ -148,3 +148,4 @@ exports.deleteLoggedUserData = asyncHandler(async (req, res, next) => {
 
   res.status(204).json({ status: 'Success' });
 });
+//
