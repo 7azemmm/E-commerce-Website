@@ -16,8 +16,14 @@ const {
   resizeProductImages,
 } = require('../services/productService');
 const authService = require('../services/authService');
+const reviewsRoute = require('./reviewRoute');
 
 const router = express.Router();
+
+// POST   /products/ productID/reviews   en2elo 3aala reviewsRoute(Nestedroute) (create review)
+// GET    /products/productID/reviews    en2elo 3aala reviewsRoute(Nestedroute) (get review)
+// GET    /products/productID/reviews/reviewID  en2elo 3aala reviewsRoute(Nestedroute) (get specific review)
+router.use('/:productId/reviews', reviewsRoute);
 
 router
   .route('/')
