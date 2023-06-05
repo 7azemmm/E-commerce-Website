@@ -14,9 +14,9 @@ const HomeCategory = () => {
             <Row className='my-2 d-flex justify-content-between'>
                 {
                     loading === false ? (
-                        category.data ? (
+                        category ? (
                             category.data.slice(0, 5).map((item, index) => {
-                                return (<CategoryCard key={index} title={item.name} img={item.image} background={colors[index]} />)
+                                return (<CategoryCard key={index} id={item._id} title={item.name} img={item.image} background={colors[index]} />)
                             })
                         ) : <h4>لا يوجد تصنيفات</h4>
                     ) : <Spinner animation="border" variant="primary" />
