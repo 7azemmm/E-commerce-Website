@@ -7,10 +7,12 @@ import notify from '../../hook/useNotifaction'
 import { applayCoupnCart } from '../../redux/actions/cartAction';
 import cartReducer from './../../redux/reducers/cartReducer';
 import GetAllUserCartHook from './get-all-user-cart-hook';
-const ApplayCouponHook = () => {
+import { Link, useNavigate } from 'react-router-dom'
+
+const ApplayCouponHook = (cartItems) => {
     const dispatch = useDispatch();
 
-   
+
     const [couponName, setCouponName] = useState('')
     const [loading, setLoading] = useState(true)
 
@@ -51,8 +53,17 @@ const ApplayCouponHook = () => {
         }
     }, [loading])
 
+    const navigate = useNavigate()
+    const handelCheckout = () => {
+        if (cartItems.length >= 1) {
+            navigate('/order/paymethoud')
+        }
+        else {
+            notify("من فضلك اضف منتجات للعربة اولا", "warn")
+        }
+    }
 
-    return [couponName, onChangeCoupon, handelSubmitCoupon]
+    return [couponName, onChangeCoupon, handelSubmitCoupon,handelCheckout]
 
 }
 
