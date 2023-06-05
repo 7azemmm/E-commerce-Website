@@ -14,7 +14,7 @@ const {
   getSubCategoryValidator,
   updateSubCategoryValidator,
   deleteSubCategoryValidator,
-} = require('../utils/validators/subCategoryValidators');
+} = require('../utils/validators/subCategoryValidator');
 
 const authService = require('../services/authService');
 
