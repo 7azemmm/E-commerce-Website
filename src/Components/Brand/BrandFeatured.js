@@ -17,9 +17,9 @@ const BrandFeatured = ({ title, btntitle }) => {
             <Row className='my-1 d-flex justify-content-between'>
                 {
                     loading === false ? (
-                        brand.data ? (
+                        brand ? (
                             brand.data.slice(0, 5).map((item, index) => {
-                                return (<BrandCard key={index} img={item.image} />)
+                                return (<BrandCard id={item._id} key={index} img={item.image} />)
                             })
                         ) : <h4>لا يوجد ماركات</h4>
                     ) : <Spinner animation="border" variant="primary" />
@@ -32,4 +32,4 @@ const BrandFeatured = ({ title, btntitle }) => {
     )
 }
 
-export default BrandFeatured
+export default BrandFeatured
