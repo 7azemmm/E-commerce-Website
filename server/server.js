@@ -36,7 +36,7 @@ app.post(
   webhookCheckout
 );
 
-// adding Middlewares
+// Middlewares
 app.use(express.json({ limit: '20kb' }));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
