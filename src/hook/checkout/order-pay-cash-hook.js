@@ -13,7 +13,6 @@ const OrderPayCashHook = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [, , , , , cartID] = GetAllUserCartHook()
-    console.log(addressDetalis)
     //when change address bu user
     const handelChooseAddress = (e) => {
         setAddressDetalis([])
