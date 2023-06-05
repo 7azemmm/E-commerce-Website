@@ -1,18 +1,14 @@
-# E-commerce Website for Web-Devellopment-course (Phase-1)
-
-## Front-end for the E-commerce website written in html,css , and java script
+# E-commerce Website for Web-Devellopment-course
 
 This project is an example of E-commerce websites specailed in selling men's clothing . every part in this project has its functionality :
+
 
 * Home page: for navigating and discover the contnet 
 * product pages: choosing the product that meets your need
 * login and register : making a proper register and log in 
 * cart : for adding projects you love and buy them
-* dashboard : admin controls the products and the users (for enter the dashboard make the login from login page with Email : admin@111.com
-Password: admin1111
-
-## watch the full website for the following link:
-https://abdelrahman2102577.github.io/Web-Devellopment--Phase-1/index.html
+* dashboard : admin controls the products and the users (for enter the dashboard make the login from login page with Email : admin@gmail.com
+Password: pass123
 
 
 ## How to install this example of E-commerce websites on your pc:
@@ -30,6 +26,3 @@ install it following the instructions for your operating system.
 6-Press Enter and wait for Git to download the repository. 
 
 7-Once the download is complete, navigate into the cloned repository directory using the command cd repository.
-
-
-
