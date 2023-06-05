@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-
-const bcrypt =require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema(
   {
@@ -40,16 +39,33 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    // child reference (one to many) used bec no of items in wishlist will be small
+    wishlist: [//array of products
+
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'Product',
+      },
+    ],
+    addresses: [//array of addresses
+      {//each adress has :
+        id: { type: mongoose.Schema.Types.ObjectId },
+        alias: String,//like title (ex:home,work)
+        details: String,//adress details
+        phone: String,
+        city: String,
+        postalCode: String,
+      },
+    ],
   },
-    
   { timestamps: true }
 );
 
-userSchema.pre('save', async function(next){
-if(!this.isModified('password')) return next(); // if this password does not occur any change as no pasword send from request so  do not enter the encryption process
-this.password=await bcrypt.hash(this.password,12);  // as this function returns a promise we use async await 
-
-next();
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
+  // Hashing user password
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
 });
 
 const User = mongoose.model('User', userSchema);

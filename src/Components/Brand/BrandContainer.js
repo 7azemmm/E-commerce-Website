@@ -16,7 +16,7 @@ const BrandContainer = ({ data,loading }) => {
                     loading === false ? (
                         data ? (
                             data.map((item, index) => {
-                                return (<BrandCard key={index} img={item.image} />)
+                                return (<BrandCard id={item._id} key={index} img={item.image} />)
                             })
                         ) : <h4>لا يوجد ماركات</h4>
                     ) : <Spinner animation="border" variant="primary" />
@@ -27,4 +27,4 @@ const BrandContainer = ({ data,loading }) => {
     )
 }
 
-export default BrandContainer
+export default BrandContainer

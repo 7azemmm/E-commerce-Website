@@ -1,30 +1,57 @@
-const express=require('express');
-const {getProductValidator,
-    updateProductValidator,
+const express = require('express');
+const {
+  getProductValidator,
+  createProductValidator,
+  updateProductValidator,
+  deleteProductValidator,
+} = require('../utils/validators/productValidator');
+
+const {
+  getProducts,
+  getProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+  uploadProductImages,
+  resizeProductImages,
+} = require('../services/productService');
+const authService = require('../services/authService');
+const reviewsRoute = require('./reviewRoute');
+
+const router = express.Router();
+
+// POST   /products/ productID/reviews   en2elo 3aala reviewsRoute(Nestedroute) (create review)
+// GET    /products/productID/reviews    en2elo 3aala reviewsRoute(Nestedroute) (get review)
+// GET    /products/productID/reviews/reviewID  en2elo 3aala reviewsRoute(Nestedroute) (get specific review)
+router.use('/:productId/reviews', reviewsRoute);
+
+router
+  .route('/')
+  .get(getProducts)
+  .post(
+    authService.protect,
+    authService.allowedTo('admin', 'manager'),
+    uploadProductImages,
+    resizeProductImages,
     createProductValidator,
-    deleteProductValidator}= require ('../utils/validators/productValidator');
+    createProduct
+  );
+router
+  .route('/:id')
+  .get(getProductValidator, getProduct)
+  .put(
+    authService.protect,
+    authService.allowedTo('admin', 'manager'),
+    uploadProductImages,
+    resizeProductImages,
+    updateProductValidator,
+    updateProduct
+  )
+  .delete(
+    authService.protect,
+    authService.allowedTo('admin'),
+    deleteProductValidator,
+    deleteProduct
+  );
 
-const{getProducts,
-    createProduct,
-    updateProduct,
-     getProduct,
-     deleteProduct,
-     uploadProductImages,
-     resizeProductImages}=require('../services/productService');
-
-const router=express.Router();
-
-
-router.route('/').get(getProducts);
-router.route('/').post(uploadProductImages,
-    resizeProductImages,createProductValidator,createProduct);
-// first add rules then the middleware to catch error then if there is no error in the request it will pass to getCategory Service 
-router.route('/:id').get(getProductValidator,getProduct);
-router.route('/:id').put(uploadProductImages,
-    resizeProductImages,updateProductValidator,updateProduct).delete(deleteProductValidator,deleteProduct);
-
-
-
-
-
-module.exports=router;
+module.exports = router;

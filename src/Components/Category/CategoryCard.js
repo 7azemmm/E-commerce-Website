@@ -1,23 +1,31 @@
-import React from 'react'
-import { Col } from 'react-bootstrap'
+import React, { useEffect } from 'react'
+import { Container, Row, Spinner } from 'react-bootstrap';
+import SubTiltle from '../Uitily/SubTiltle'
+import CategoryCard from './../Category/CategoryCard';
+import HomeCategoryHook from '../../hook/category/home-category-hook'
 
-const CategoryCard = ({ background, img, title }) => {
+const HomeCategory = () => {
+
+    const [category, loading, colors] = HomeCategoryHook();
+
     return (
-        <Col
-            xs="6"
-            sm="6"
-            md="4"
-            lg="2"
-            className="my-4 d-flex justify-content-around ">
-            <div className="allCard mb-3 ">
-                <div
-                    className="categoty-card "
-                    style={{ backgroundColor: `${background}` }}></div>{" "}
-                <img alt="zcv" src={img} className="categoty-card-img" />
-                <p className="categoty-card-text my-2">{title}</p>
-            </div>
-        </Col>
+        <Container>
+            <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
+            <Row className='my-2 d-flex justify-content-between'>
+                {
+                    loading === false ? (
+                        category ? (
+                            category.data.slice(0, 5).map((item, index) => {
+                                return (<CategoryCard key={index} id={item._id} title={item.name} img={item.image} background={colors[index]} />)
+                            })
+                        ) : <h4>لا يوجد تصنيفات</h4>
+                    ) : <Spinner animation="border" variant="primary" />
+
+                }
+
+            </Row>
+        </Container>
     )
 }
 
-export default CategoryCard
+export default HomeCategory
