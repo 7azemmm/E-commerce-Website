@@ -40,12 +40,3 @@ exports.getCategory = factory.getOne(Category);
 // @access  Private
 exports.createCategory = factory.createOne(Category);
 
-// @desc    Update specific category
-// @route   PUT /api/v1/categories/:id
-// @access  Private
-exports.updateCategory = factory.updateOne(Category);
-
-// @desc    Delete specific category
-// @route   DELETE /api/v1/categories/:id
-// @access  Private
-exports.deleteCategory = factory.deleteOne(Category);

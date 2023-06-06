@@ -57,7 +57,7 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-orderSchema.pre(/^find/, function (next) {
+orderSchema.pre(/^find/, function (next) {  // populate to user 
   this.populate({
     path: 'user',
     select: 'name profileImg email phone',
@@ -71,5 +71,3 @@ orderSchema.pre(/^find/, function (next) {
 
 module.exports = mongoose.model('Order', orderSchema);
 
-// In@in2016
-//progahmedelsayed@gmail.com
