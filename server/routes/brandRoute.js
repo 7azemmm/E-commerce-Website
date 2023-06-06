@@ -16,7 +16,7 @@ const {
   deleteBrand,
   uploadBrandImage,
   resizeImage,
-} = require('../services/brandsService');
+} = require('../services/brandService');
 
 const router = express.Router();
 
