@@ -14,7 +14,7 @@ const globalError = require('./middlewares/errorMiddleware');
 const dbConnection = require('./config/database');
 // Routes
 const mountRoutes = require('./routes');
-const { webhookCheckout } = require('./services/orderService');
+
 
 // Connect with db
 dbConnection();
