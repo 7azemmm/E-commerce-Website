@@ -6,11 +6,8 @@ import notify from '../useNotifaction';
 
 
 const ResetPasswordHook = () => {
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
     const [password, setPassword] = useState('')
     const [confirmPassword, setComfirmPassword] = useState('')
     const [loading, setLoading] = useState(true)
@@ -19,15 +16,9 @@ const ResetPasswordHook = () => {
     const OnChangePassword = (e) => {
         setPassword(e.target.value)
     }
-
-
-
     const OnChangeConfirmPassword = (e) => {
         setComfirmPassword(e.target.value)
     }
-
-
-
     const onSubmit = async () => {
         if (password === "") {
             notify("من فضلك ادخل كلمة السر", "error")
@@ -46,13 +37,7 @@ const ResetPasswordHook = () => {
         setLoading(false)
     }
 
-
-
-
     const res = useSelector(state => state.authReducer.verifyPassword)
-
-
-
 
     useEffect(() => {
         if (loading === false) {
@@ -72,9 +57,6 @@ const ResetPasswordHook = () => {
     }, [loading])
 
     return [password, confirmPassword, , OnChangePassword, OnChangeConfirmPassword, onSubmit]
-    
 }
-
-
 
 export default ResetPasswordHook

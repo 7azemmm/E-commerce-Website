@@ -6,7 +6,6 @@ import RateItem from './RateItem';
 import RatePost from './RatePost';
 import ViewAllReviewHook from './../../hook/review/view-all-review-hook';
 import { useParams } from 'react-router-dom';
-
 const RateContainer = ({ rateAvg, rateQty }) => {
     const { id } = useParams()
     const [allReview, onPress] = ViewAllReviewHook(id)

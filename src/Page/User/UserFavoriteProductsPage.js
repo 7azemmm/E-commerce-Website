@@ -8,7 +8,9 @@ import AdminAddBrand from '../../Components/Admin/AdminAddBrand'
 import UserSideBar from '../../Components/User/UserSideBar'
 import UserAllOrder from '../../Components/User/UserAllOrder'
 import UserFavoriteProduct from '../../Components/User/UserFavoriteProduct'
+import { useNavigate } from 'react-router-dom';
 const UserFavoriteProductsPage = () => {
+   
     return (
         <Container >
             <Row className='py-3'>

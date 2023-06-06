@@ -9,6 +9,7 @@ const {
   applyCoupon,
 } = require('../services/cartService');
 const authService = require('../services/authService');
+//it will be applied on all next route
 
 const router = express.Router();
 

@@ -1,11 +1,13 @@
 const asyncHandler = require('express-async-handler');
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid');//to generate unique id
 const sharp = require('sharp');
+//image processing
 
 const { uploadMixOfImages } = require('../middlewares/uploadImageMiddleware');
 const factory = require('./handlersFactory');
 const Product = require('../models/productModel');
 
+// Middleware for uploading product images
 exports.uploadProductImages = uploadMixOfImages([
   {
     name: 'imageCover',
@@ -18,7 +20,7 @@ exports.uploadProductImages = uploadMixOfImages([
 ]);
 
 exports.resizeProductImages = asyncHandler(async (req, res, next) => {
-  // console.log(req.files);
+  
   //1- Image processing for imageCover
   if (req.files.imageCover) {
     const imageCoverFileName = `product-${uuidv4()}-${Date.now()}-cover.jpeg`;
@@ -37,8 +39,9 @@ exports.resizeProductImages = asyncHandler(async (req, res, next) => {
     req.body.images = [];
     await Promise.all(
       req.files.images.map(async (img, index) => {
+                                     //current iteration
         const imageName = `product-${uuidv4()}-${Date.now()}-${index + 1}.jpeg`;
-
+        //index+1 to differentiate between multiple images if they are uploaded simultaneously.
         await sharp(img.buffer)
           .resize(2000, 1333)
           .toFormat('jpeg')

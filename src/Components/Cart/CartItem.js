@@ -24,7 +24,7 @@ const CartItem = ({ item }) => {
         </Modal.Footer>
       </Modal>
 
-      <img width="160px" height="197px" src={item.product.imageCover || mobile} alt="" />
+      <img width="160px" height="197px" src={item.product ? item.product.imageCover : mobile} alt="" />
       <div className="w-100">
         <Row className="justify-content-between">
           <Col sm="12" className=" d-flex flex-row justify-content-between">
@@ -47,7 +47,7 @@ const CartItem = ({ item }) => {
         <Row>
           <Col sm="12" className="mt-1">
             <div className="cat-text d-inline">الماركة :</div>
-            <div className="barnd-text d-inline mx-1">{item.product.brand.name || ""} </div>
+            <div className="barnd-text d-inline mx-1">{item.product.brand ? item.product.brand.name : ""} </div>
           </Col>
         </Row>
         <Row>
@@ -82,4 +82,4 @@ const CartItem = ({ item }) => {
   )
 }
 
-export default CartItem
+export default CartItem

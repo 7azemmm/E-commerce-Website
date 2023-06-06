@@ -10,4 +10,4 @@ const ProtectedRoute = ({ auth, children }) => {
     return children ? children : <Outlet />
 }
 
-export default ProtectedRoute
+export default ProtectedRoute
