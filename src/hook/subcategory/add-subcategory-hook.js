@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import notify from '../../hook/useNotifaction'
 import { getAllCategory } from '../../redux/actions/categoryAction'
 
-const addSubcategoryhook = () => {
+const AddSubcategoryhook = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -84,4 +84,4 @@ const addSubcategoryhook = () => {
     return [id, name, loading, category, subcategory, handelChange, handelSubmit, onChangeName]
 };
 
-export default addSubcategoryhook;
+export default AddSubcategoryhook;
