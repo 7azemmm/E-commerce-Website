@@ -29,12 +29,7 @@ app.options('*', cors());
 // compress all responses
 app.use(compression());
 
-// Checkout webhook
-app.post(
-  '/webhook-checkout',
-  express.raw({ type: 'application/json' }),
-  webhookCheckout
-);
+
 
 // Middlewares
 app.use(express.json({ limit: '20kb' }));
