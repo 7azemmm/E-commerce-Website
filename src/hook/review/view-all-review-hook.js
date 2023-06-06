@@ -20,7 +20,7 @@ const ViewAllReviewHook = (id) => {
     }, [])
 
     const onPress = async (page) => {
-        await dispatch(allReviewProduct(id, page, 5))
+        await dispatch(allReviewProduct(id, page, 2))
     }
 
     return [allReview, onPress]
