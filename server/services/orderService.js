@@ -3,7 +3,9 @@ const asyncHandler = require('express-async-handler');
 const factory = require('./handlersFactory');
 const ApiError = require('../utils/apiError');
 
-const Cart= require('../models/cartModel');
+
+const Product = require('../models/productModel');
+const Cart = require('../models/cartModel');
 const Order = require('../models/orderModel');
 
 // @desc    create cash order
