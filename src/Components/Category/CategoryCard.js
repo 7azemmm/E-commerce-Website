@@ -1,31 +1,26 @@
-import React, { useEffect } from 'react'
-import { Container, Row, Spinner } from 'react-bootstrap';
-import SubTiltle from '../Uitily/SubTiltle'
-import CategoryCard from './../Category/CategoryCard';
-import HomeCategoryHook from '../../hook/category/home-category-hook'
+import React from 'react'
+import { Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
-const HomeCategory = () => {
-
-    const [category, loading, colors] = HomeCategoryHook();
-
+const CategoryCard = ({ background, img, title, id }) => {
     return (
-        <Container>
-            <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
-            <Row className='my-2 d-flex justify-content-between'>
-                {
-                    loading === false ? (
-                        category ? (
-                            category.data.slice(0, 5).map((item, index) => {
-                                return (<CategoryCard key={index} id={item._id} title={item.name} img={item.image} background={colors[index]} />)
-                            })
-                        ) : <h4>لا يوجد تصنيفات</h4>
-                    ) : <Spinner animation="border" variant="primary" />
-
-                }
-
-            </Row>
-        </Container>
+        <Col
+            xs="6"
+            sm="6"
+            md="4"
+            lg="2"
+            className="my-4 d-flex justify-content-around ">
+            <div className="allCard mb-3 ">
+                <div
+                    className="categoty-card "
+                    style={{ backgroundColor: `${background}` }}></div>{" "}
+                <Link to={`/products/category/${id}`} style={{ textDecoration: 'none' }}>
+                    <img alt="zcv" src={img} className="categoty-card-img" />
+                    <p className="categoty-card-text my-2">{title}</p>
+                </Link>
+            </div>
+        </Col>
     )
 }
 
-export default HomeCategory
+export default CategoryCard

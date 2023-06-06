@@ -4,11 +4,10 @@ import rate from '../../images/rate.png'
 import deleteicon from '../../images/delete.png'
 import editicon from '../../images/edit.png'
 import { ToastContainer } from 'react-toastify';
+
 import DeleteRateHook from '../../hook/review/delete-rate-hook'
 import EditRateHook from '../../hook/review/edit-rate-hook'
 import ReactStars from 'react-rating-stars-component'
-
-
 const RateItem = ({ review }) => {
 
 

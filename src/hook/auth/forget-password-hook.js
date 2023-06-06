@@ -52,5 +52,4 @@ const ForgetPasswordHook = () => {
     return [OnChangeEmail, email, onSubmit]
 }
 
-
 export default ForgetPasswordHook

@@ -17,7 +17,7 @@ body {
 }
 .logo {
   height: 46px;
-  width: 100px;
+  width: 50px;
 }
 .login-img {
   height: 20px;
@@ -414,6 +414,13 @@ body {
   border-radius: 20px;
   background-color: #ffffff;
 }
+
+.cart-item-body-admin {
+  height: 130px;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #ffffff;
+}
 .copon-input {
   box-sizing: border-box;
   height: 46px;
@@ -441,7 +448,7 @@ body {
 }
 
 .cart-checkout {
-  height: 200px;
+  height: 250px;
   width: 100%;
   border-radius: 20px;
   background-color: #ffffff;
@@ -623,10 +630,6 @@ body {
   color: white;
   border-radius: 9px;
   background-color: #272727;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  -ms-border-radius: 9px;
-  -o-border-radius: 9px;
 }
 
 /* user address */
@@ -684,4 +687,9 @@ body {
 .dropdown-item:hover {
   color: #212529 !important;
   background-color: white !important;
+}
+
+.badge {
+  font-size: 12px !important;
+font-weight: bold !important;
 }
