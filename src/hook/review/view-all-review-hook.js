@@ -15,7 +15,7 @@ const ViewAllReviewHook = (id) => {
 
     useEffect(() => {
         setLoading(true)
-        dispatch(allReviewProduct(id, 1, 5))
+        dispatch(allReviewProduct(id, 1, 2))
         setLoading(false)
     }, [])
 
