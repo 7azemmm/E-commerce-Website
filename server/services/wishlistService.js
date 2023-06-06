@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-
+//no need to wrap asynchronous functions in a try-catch block or pass the error to the next function manually.
 const User = require('../models/userModel');
 
 // @desc    Add product to wishlist
